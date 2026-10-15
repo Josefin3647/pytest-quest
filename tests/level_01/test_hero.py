@@ -9,6 +9,26 @@ Write your tests in this file (you may add more test_*.py files too).
 
 from dungeon.hero import Hero
 
+def test_new_hero_hp_has_full_health():
+    hero = Hero("Ada")
+    assert hero.hp == 100
+
+def test_hero_take_damage_never_goes_below_zero():
+    hero = Hero("Ada", hp=15)
+    hero.take_damage(16)
+    assert hero.hp == 0
+
+def test_250_xp_gives_two_levels():
+    hero = Hero("Ada")
+    hero.gain_xp(250)
+    assert hero.level == 3
+
+def test_250_xp_gives_50_xp_left():
+    hero = Hero("Ada")
+    hero.gain_xp(250)
+    assert hero.xp == 50
+
+
 
 # A first step, to get you going. Uncomment it, run it, then make it your own:
 #
